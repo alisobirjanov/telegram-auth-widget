@@ -5,14 +5,11 @@ on:
     branches: [ test ]
 
 jobs:
-  hello:
+  changed-files:
     runs-on: test
     steps:
-      # ✅ Клонирует (checkout) текущий репозиторий
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          path: my-folder
 
       - name: Get changed files in the last commit
         id: changed
