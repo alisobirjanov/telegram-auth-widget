@@ -14,8 +14,7 @@ jobs:
 
       - name: Get changed .yml files
         id: get_files
-        run: |
-          git diff-tree --no-commit-id --name-only -r HEAD | grep '\.ya\?ml$'
+        run: git diff-tree --no-commit-id --name-only -r HEAD | grep '\.ya\?ml$'
       #     FILES=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.ya\?ml$' || true)
       #     echo "YML_FILES=$FILES" >> $GITHUB_OUTPUT
 
