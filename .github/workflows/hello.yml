@@ -5,7 +5,6 @@ on:
     branches: [ test ]
 
 
-
 jobs:
   run-compose:
     runs-on: test
@@ -16,17 +15,18 @@ jobs:
       - name: Get changed .yml files
         id: get_files
         run: |
-          FILES=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.ya\?ml$' || true)
-          echo "YML_FILES=$FILES" >> $GITHUB_OUTPUT
+          git diff-tree --no-commit-id --name-only -r HEAD | grep '\.ya\?ml$'
+      #     FILES=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.ya\?ml$' || true)
+      #     echo "YML_FILES=$FILES" >> $GITHUB_OUTPUT
 
-      - name: Show changed .yml files
-        run: echo "${{ steps.get_files.outputs.YML_FILES }}"
+      # - name: Show changed .yml files
+      #   run: echo "${{ steps.get_files.outputs.YML_FILES }}"
 
-      - name: Run docker-compose for each file
-        if: ${{ steps.get_files.outputs.YML_FILES != '' }}
-        run: |
-          for file in ${{ steps.get_files.outputs.YML_FILES }}; do
-            echo "🔧 Running: docker compose -f $file up -d"
-            docker compose -f "$file" up -d
-          done
+      # - name: Run docker-compose for each file
+      #   if: ${{ steps.get_files.outputs.YML_FILES != '' }}
+      #   run: |
+      #     for file in ${{ steps.get_files.outputs.YML_FILES }}; do
+      #       echo "🔧 Running: docker compose -f $file up -d"
+      #       docker compose -f "$file" up -d
+      #     done
 
