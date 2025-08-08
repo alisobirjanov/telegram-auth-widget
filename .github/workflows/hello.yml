@@ -14,14 +14,10 @@ jobs:
         with:
           path: my-folder
 
-      # ✅ Создаёт папку my-folder
-      - name: Git pull
-        run: docker
+      - name: Get changed files in the last commit
+        id: changed
+        run: |
+          echo "FILES=$(git diff-tree --no-commit-id --name-only -r HEAD)" >> $GITHUB_OUTPUT
 
-      # # ✅ Копирует все файлы из репозитория в эту папку
-      # - name: Copy code to folder
-      #   run: cp -r * my-folder/
-
-      # # ✅ Выводит содержимое созданной папки
-      # - name: List folder contents
-      #   run: ls -la my-folder
+      - name: Print changed files
+        run: echo "Changed files: ${{ steps.changed.outputs.FILES }}"
