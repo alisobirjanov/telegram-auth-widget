@@ -11,6 +11,8 @@ jobs:
       # ✅ Клонирует (checkout) текущий репозиторий
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          path: /home/ali/my-folder
 
       # ✅ Создаёт папку my-folder
       - name: Git pull
