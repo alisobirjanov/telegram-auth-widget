@@ -16,7 +16,7 @@ jobs:
 
       # ✅ Создаёт папку my-folder
       - name: Git pull
-        run: ls
+        run: docker
 
       # # ✅ Копирует все файлы из репозитория в эту папку
       # - name: Copy code to folder
