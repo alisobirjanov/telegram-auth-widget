@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  hello:
+    image: alpine
+    container_name: hello-world
+    command: echo "👋 Hello, World from Docker Compose!"
