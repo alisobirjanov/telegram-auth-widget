@@ -15,6 +15,3 @@ jobs:
         id: changed
         run: |
           echo "FILES=$(git diff-tree --no-commit-id --name-only -r HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Print changed files
-        run: echo "Changed files: ${{ steps.changed.outputs.FILES }}"
