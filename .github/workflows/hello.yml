@@ -13,13 +13,13 @@ jobs:
         uses: actions/checkout@v4
 
       # ✅ Создаёт папку my-folder
-      - name: Create folder
-        run: mkdir -p my-folder
+      - name: Git pull
+        run: ls
 
-      # ✅ Копирует все файлы из репозитория в эту папку
-      - name: Copy code to folder
-        run: cp -r * my-folder/
+      # # ✅ Копирует все файлы из репозитория в эту папку
+      # - name: Copy code to folder
+      #   run: cp -r * my-folder/
 
-      # ✅ Выводит содержимое созданной папки
-      - name: List folder contents
-        run: ls -la my-folder
+      # # ✅ Выводит содержимое созданной папки
+      # - name: List folder contents
+      #   run: ls -la my-folder
