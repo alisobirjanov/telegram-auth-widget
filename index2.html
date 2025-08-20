@@ -1,44 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
 
 
-    <button>
-      open
-    </button>
+  <button>
+    open
+  </button>
 
-    <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
-    <script>
+  <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+  <script>
 
-      window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.MainButton.text = "Start";
-      window.Telegram.WebApp.MainButton.show();
-      window.Telegram.WebApp.onEvent("mainButtonClicked", function () {
-        window.Telegram.WebApp.sendData("start");
-      });
-      window.Telegram.WebApp.onEvent("authSuccess", function (user) {
-        console.log("User authenticated:", user);
-      });
-      window.Telegram.WebApp.onEvent("authError", function (error) {
-        console.error("Authentication error:", error);
-      });
-      window.Telegram.WebApp.onEvent("authRequest", function (request) {
-        console.log("Authentication request:", request);
-        window.Telegram.WebApp.sendData("auth_request");
-      });
+    document.querySelector("button").addEventListener("click", function () {
+      window.Telegram.WebApp.showScanQrPopup((data) => {
+        console.log("QR code scan completed", data);
+      }, (error) => {
+        console.error("QR code scan error:", error);
+      })
+    });
+  </script>
+</body>
 
-      document.querySelector("button").addEventListener("click", function () {
-        window.Telegram.WebApp.showScanQrPopup((data) => {
-          console.log("QR code scan completed", data);
-        }, (error) => {
-          console.error("QR code scan error:", error);
-        })
-      });
-    </script>
-  </body>
 </html>
