@@ -10,21 +10,28 @@
 <body>
 
 
-  <button>
-    open
-  </button>
 
   <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
   <script>
+    // Проверяем, что Telegram WebApp доступен
+    const tg = window.Telegram.WebApp;
 
-    document.querySelector("button").addEventListener("click", function () {
-      window.Telegram.WebApp.showScanQrPopup((data) => {
-        console.log("QR code scan completed", data);
-      }, (error) => {
-        console.error("QR code scan error:", error);
-      })
-    });
+    // Открыть QR-сканер
+    function openQrScanner() {
+      tg.showScanQrPopup(
+        { text: "Отсканируй QR-код" },
+        function (result) {
+          if (result) {
+            alert("Сканировано: " + result);
+            tg.closeScanQrPopup();
+          }
+        }
+      );
+    }
   </script>
+
+
+  <button onclick="openQrScanner()">Сканировать QR</button>
 </body>
 
 </html>
