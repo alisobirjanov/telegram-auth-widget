@@ -6,6 +6,12 @@
     <title>Document</title>
   </head>
   <body>
+
+
+    <button>
+      open
+    </button>
+
     <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
     <script>
 
@@ -24,6 +30,14 @@
       window.Telegram.WebApp.onEvent("authRequest", function (request) {
         console.log("Authentication request:", request);
         window.Telegram.WebApp.sendData("auth_request");
+      });
+
+      document.querySelector("button").addEventListener("click", function () {
+        window.Telegram.WebApp.showScanQrPopup((data) => {
+          console.log("QR code scan completed", data);
+        }, (error) => {
+          console.error("QR code scan error:", error);
+        })
       });
     </script>
   </body>
